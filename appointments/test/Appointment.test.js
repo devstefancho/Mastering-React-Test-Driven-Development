@@ -4,13 +4,27 @@ import { act } from 'react-dom/test-utils';
 import Appointment from '../src/Appointment';
 
 describe('Appointment', () => {
-  it('renders the customer name', () => {
-    const customer = { firstName: 'Ashley' };
-    const component = <Appointment customer={customer} />;
-    const container = document.createElement('div');
-    document.body.appendChild(container);
+  let customer;
+  let container;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+  });
+
+  const renderComponent = (component) => {
     const root = createRoot(container);
     act(() => root.render(component));
-    expect(document.body.textContent).toMatch('Ashley');
+  };
+
+  it('renders the customer name', () => {
+    customer = { firstName: 'Ashley' };
+    renderComponent(<Appointment customer={customer} />);
+    expect(container.textContent).toMatch('Ashley');
+  });
+
+  it('renders another customer name', () => {
+    customer = { firstName: 'Tomas' };
+    renderComponent(<Appointment customer={customer} />);
+    expect(container.textContent).toMatch('Tomas');
   });
 });
