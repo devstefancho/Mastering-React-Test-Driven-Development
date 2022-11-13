@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
-import Appointment from '../src/Appointment';
+import { Appointment, AppointmentsDayView } from '../src/Appointment';
 
 describe('Appointment', () => {
   let customer;
@@ -26,5 +26,23 @@ describe('Appointment', () => {
     customer = { firstName: 'Tomas' };
     renderComponent(<Appointment customer={customer} />);
     expect(container.textContent).toMatch('Tomas');
+  });
+});
+
+describe('AppointmentsDayView', () => {
+  let container;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+  });
+
+  const renderComponent = (component) => {
+    const root = createRoot(container);
+    act(() => root.render(component));
+  };
+
+  it('renders a div with the right id', () => {
+    renderComponent(<AppointmentsDayView appointments={[]} />);
+    expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
   });
 });
