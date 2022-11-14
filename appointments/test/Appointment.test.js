@@ -48,8 +48,8 @@ describe('AppointmentsDayView', () => {
 
   const today = new Date();
   const appointments = [
-    { startedAt: today.setHours(12, 0) },
-    { startedAt: today.setHours(13, 0) },
+    { startedAt: today.setHours(12, 0), customer: { firstName: 'Stefan' } },
+    { startedAt: today.setHours(13, 0), customer: { firstName: 'Steven' } },
   ];
 
   it('render multiple appointments in an ol element', () => {
@@ -63,5 +63,17 @@ describe('AppointmentsDayView', () => {
     expect(container.querySelector('ol')).not.toBeNull();
     expect(container.querySelectorAll('li')[0].textContent).toBe('12:00');
     expect(container.querySelectorAll('li')[1].textContent).toBe('13:00');
+  });
+
+  it('initially shows a message saying there are no appointments today', () => {
+    renderComponent(<AppointmentsDayView appointments={[]} />);
+    expect(container.textContent).toMatch(
+      'There are not appointments scheduled for today'
+    );
+  });
+
+  it('selects the first appointment by default', () => {
+    renderComponent(<AppointmentsDayView appointments={appointments} />);
+    expect(container.textContent).toMatch('Stefan');
   });
 });

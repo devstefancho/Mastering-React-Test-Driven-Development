@@ -16,5 +16,10 @@ export const AppointmentsDayView = ({ appointments }) => (
         <li key={a.startedAt}>{appointmentTimeOfDay(a.startedAt)}</li>
       ))}
     </ol>
+    {appointments.length === 0 ? (
+      <p>There are not appointments scheduled for today</p>
+    ) : (
+      <Appointment customer={appointments[0].customer} />
+    )}
   </div>
 );
