@@ -45,4 +45,23 @@ describe('AppointmentsDayView', () => {
     renderComponent(<AppointmentsDayView appointments={[]} />);
     expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
   });
+
+  const today = new Date();
+  const appointments = [
+    { startedAt: today.setHours(12, 0) },
+    { startedAt: today.setHours(13, 0) },
+  ];
+
+  it('render multiple appointments in an ol element', () => {
+    renderComponent(<AppointmentsDayView appointments={appointments} />);
+    expect(container.querySelector('ol')).not.toBeNull();
+    expect(container.querySelector('ol').children).toHaveLength(2);
+  });
+
+  it('render each appointment in an li', () => {
+    renderComponent(<AppointmentsDayView appointments={appointments} />);
+    expect(container.querySelector('ol')).not.toBeNull();
+    expect(container.querySelectorAll('li')[0].textContent).toBe('12:00');
+    expect(container.querySelectorAll('li')[1].textContent).toBe('13:00');
+  });
 });
