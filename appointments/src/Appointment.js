@@ -4,8 +4,8 @@ export const Appointment = ({ customer }) => {
   return <div>{customer.firstName}</div>;
 };
 
-const appointmentTimeOfDay = (startedAt) => {
-  const [h, m] = new Date(startedAt).toTimeString().split(':');
+const appointmentTimeOfDay = (startsAt) => {
+  const [h, m] = new Date(startsAt).toTimeString().split(':');
   return `${h}:${m}`;
 };
 
@@ -15,9 +15,9 @@ export const AppointmentsDayView = ({ appointments }) => {
     <div id="appointmentsDayView">
       <ol>
         {appointments.map((a, i) => (
-          <li key={a.startedAt}>
+          <li key={a.startsAt}>
             <button type="button" onClick={() => setSelectedAppointment(i)}>
-              {appointmentTimeOfDay(a.startedAt)}
+              {appointmentTimeOfDay(a.startsAt)}
             </button>
           </li>
         ))}

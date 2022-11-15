@@ -48,8 +48,8 @@ describe('AppointmentsDayView', () => {
 
   const today = new Date();
   const appointments = [
-    { startedAt: today.setHours(12, 0), customer: { firstName: 'Stefan' } },
-    { startedAt: today.setHours(13, 0), customer: { firstName: 'Steven' } },
+    { startsAt: today.setHours(12, 0), customer: { firstName: 'Stefan' } },
+    { startsAt: today.setHours(13, 0), customer: { firstName: 'Steven' } },
   ];
 
   it('render multiple appointments in an ol element', () => {
