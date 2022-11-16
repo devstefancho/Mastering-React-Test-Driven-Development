@@ -12,26 +12,36 @@ export const Appointment = ({
     <div>
       <h1>Today's appointment at {appointmentTimeOfDay(startsAt)}</h1>
       <table>
-        <tr>
-          <td>Customer</td>
-          <td>{customer.firstName}</td>
-        </tr>
-        <tr>
-          <td>Phone number</td>
-          <td>{customer.phoneNumber}</td>
-        </tr>
-        <tr>
-          <td>Stylist</td>
-          <td>{stylist}</td>
-        </tr>
-        <tr>
-          <td>Service</td>
-          <td>{service}</td>
-        </tr>
-        <tr>
-          <td>Notes</td>
-          <td>{notes}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td>Customer</td>
+            <td>{customer.firstName}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>Phone number</td>
+            <td>{customer.phoneNumber}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>Stylist</td>
+            <td>{stylist}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>Service</td>
+            <td>{service}</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td>Notes</td>
+            <td>{notes}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

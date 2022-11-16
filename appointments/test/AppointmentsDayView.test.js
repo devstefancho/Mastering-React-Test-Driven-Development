@@ -1,10 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import ReactTestUtils, { act } from 'react-dom/test-utils';
-import { Appointment, AppointmentsDayView } from '../src/Appointment';
+import { Appointment, AppointmentsDayView } from '../src/AppointmentsDayView';
 
 describe('Appointment', () => {
-  let customer;
+  let appointment;
   let container;
 
   beforeEach(() => {
@@ -17,14 +17,14 @@ describe('Appointment', () => {
   };
 
   it('renders the customer name', () => {
-    customer = { firstName: 'Ashley' };
-    renderComponent(<Appointment customer={customer} />);
+    appointment = { customer: { firstName: 'Ashley' } };
+    renderComponent(<Appointment appointment={appointment} />);
     expect(container.textContent).toMatch('Ashley');
   });
 
   it('renders another customer name', () => {
-    customer = { firstName: 'Tomas' };
-    renderComponent(<Appointment customer={customer} />);
+    appointment = { customer: { firstName: 'Tomas' } };
+    renderComponent(<Appointment appointment={appointment} />);
     expect(container.textContent).toMatch('Tomas');
   });
 });
