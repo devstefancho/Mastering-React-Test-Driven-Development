@@ -21,4 +21,12 @@ describe('Customer Form', () => {
     );
     expectToBeInputFieldOfTypeText(field);
   });
+
+  it('includes the existing value for the first name', () => {
+    render(<CustomerForm firstName={'Stefan'} />);
+    const field = container.querySelector(
+      'form[id="customer"]>[name="firstName"]'
+    );
+    expect(field.value).toEqual('Stefan');
+  });
 });
