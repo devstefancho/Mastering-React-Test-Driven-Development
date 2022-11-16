@@ -13,20 +13,16 @@ describe('Customer Form', () => {
   beforeEach(() => {
     ({ render, container } = createContainer());
   });
+  const form = (id) => container.querySelector(`form[id="${id}"]`);
+  const firstNameField = () => form('customer').elements.firstName;
 
   it('renders a form', () => {
     render(<CustomerForm />);
-    const field = container.querySelector(
-      'form[id="customer"]>[name="firstName"]'
-    );
-    expectToBeInputFieldOfTypeText(field);
+    expectToBeInputFieldOfTypeText(firstNameField());
   });
 
   it('includes the existing value for the first name', () => {
     render(<CustomerForm firstName={'Stefan'} />);
-    const field = container.querySelector(
-      'form[id="customer"]>[name="firstName"]'
-    );
-    expect(field.value).toEqual('Stefan');
+    expect(firstNameField().value).toEqual('Stefan');
   });
 });
