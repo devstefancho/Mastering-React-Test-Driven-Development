@@ -17,6 +17,7 @@
   "scripts": {
     "prepare": "husky install",
     "test": "jest",
+    "test:verbose": "jest --verbose",
     "test:watchAll": "jest --watchAll",
     "build": "webpack"
   },
