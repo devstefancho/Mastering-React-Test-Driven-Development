@@ -60,7 +60,8 @@ describe('Customer Form', () => {
         />
       );
 
-      act(() => ReactTestUtils.Simulate.submit(form('customer')));
+      const button = container.querySelector('button[type="submit"]');
+      act(() => ReactTestUtils.Simulate.submit(button));
     });
 
   const itSubmitNewValue = (fieldName, value) =>
@@ -76,12 +77,20 @@ describe('Customer Form', () => {
         />
       );
 
+      const button = container.querySelector('button[type="submit"]');
       const node = field(fieldName);
       node.value = value;
 
       act(() => ReactTestUtils.Simulate.change(node));
-      act(() => ReactTestUtils.Simulate.submit(form('customer')));
+      act(() => ReactTestUtils.Simulate.submit(button));
     });
+
+  it('has a submit button', () => {
+    render(<CustomerForm />);
+    const button = container.querySelector('button[type="submit"]');
+    expect(button).not.toBeNull();
+    expect(button.type).toEqual('submit');
+  });
 
   describe('FirstName Field', () => {
     itRenderForm('firstName');
