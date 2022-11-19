@@ -29,7 +29,7 @@ describe('Customer Form', () => {
 
   const itIncludeExistingValue = (fieldName) =>
     it('includes the existing value', () => {
-      render(<CustomerForm firstName={fieldName} />);
+      render(<CustomerForm {...{ [fieldName]: fieldName }} />);
       expect(field(fieldName).value).toEqual(fieldName);
     });
 
@@ -90,5 +90,23 @@ describe('Customer Form', () => {
     itAssignIdMatchToLabel('firstName');
     itSubmitExistingValue('firstName');
     itSubmitNewValue('firstName', 'Steven');
+  });
+
+  describe('LastName Field', () => {
+    itRenderForm('lastName');
+    itIncludeExistingValue('lastName');
+    itHasLabel('lastName', 'Last Name');
+    itAssignIdMatchToLabel('lastName');
+    itSubmitExistingValue('lastName');
+    itSubmitNewValue('lastName', 'Cho');
+  });
+
+  describe('PhoneNumber Field', () => {
+    itRenderForm('phoneNumber');
+    itIncludeExistingValue('phoneNumber');
+    itHasLabel('phoneNumber', 'Phone Number');
+    itAssignIdMatchToLabel('phoneNumber');
+    itSubmitExistingValue('phoneNumber');
+    itSubmitNewValue('phoneNumber', '01012341234');
   });
 });
